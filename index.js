@@ -9,21 +9,18 @@
         3. query params -- req.query 
         4. header params -- req.get(headerName) */
 
+const collageManagementRoutes = require('./src/modules/management-staff/routes');     
+const express = require('express');
 
- const express = require('express')
- const app = express()
+const app = express()
+ 
  app.use(express.json())
- app.get('/', function (req, res) { res.send('Hello World')})
- app.use('/post', require('./src/services/management-staff/routes'))
+
+ const collegeManagment = new collageManagementRoutes();
+ app.use('/', collegeManagment.router);
  
- /*function createStudent(req, res) { const requestBody = req.body; console.log(requestBody);
-  
-const firstName = requestBody.first_name; res.send('Hello Created Student for ' + firstName);}
- function getStudentByName(req, res) { console.log(req.headers); const auth = req.get('authorization'); res.send('Student Retrieved for ' + auth);} function getStudentByFirstName(req, res) { console.log(req.query) res.send('Student : ' + req.params.firstname);
- }
- 
- app.post('/student', createStudent)app.get('/student', getStudentByName)app.get('/student/:firstname', getStudentByFirstName)*/app.listen(3000)
+ app.listen(4000)
  console.log('App is listening....');
  
  /* Create Express Application
-  Create Below Endpoints teacher - POST Method - get body Parameters teacher/:teacherName - GET - get pathParameters teacher/:teacherName -> PUT -> get PathParmeters + Query Parameters*/
+    Create Below Endpoints teacher - POST Method - get body Parameters teacher/:teacherName - GET - get pathParameters teacher/:teacherName -> PUT -> get PathParmeters + Query Parameters*/
