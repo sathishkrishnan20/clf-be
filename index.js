@@ -13,14 +13,20 @@ const collageManagementRoutes = require('./src/modules/management-staff/routes')
 const express = require('express');
 
 const app = express()
- 
- app.use(express.json())
 
- const collegeManagment = new collageManagementRoutes();
- app.use('/', collegeManagment.router);
+app.use(express.json())
+
+const collegeManagment = new collageManagementRoutes();
  
- app.listen(4000)
- console.log('App is listening....');
+app.use('/', collegeManagment.router);
+ 
+app.get('/', (req, res) => {
+    res.setHeader('hello', 'hee')
+    res.status(200).send("Hello")  
+})
+ 
+app.listen(4000)
+console.log('App is listening....');
  
  /* Create Express Application
     Create Below Endpoints teacher - POST Method - get body Parameters teacher/:teacherName - GET - get pathParameters teacher/:teacherName -> PUT -> get PathParmeters + Query Parameters*/

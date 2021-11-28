@@ -1,4 +1,4 @@
-import express from 'express';
+const express = require('express');
 
 class CollegeManagemntController {
     router;
@@ -10,10 +10,11 @@ class CollegeManagemntController {
         this.router.get('/college', this.ss);
     }
     
-    protected ss(req, res) {
-       console.log('Calling SS');
+    ss(req, res) {
+        
+        console.log(res.send);
        res.send("Response Called");
     }
 }
 
-export default CollegeManagemntController;
+module.exports = CollegeManagemntController;
