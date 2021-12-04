@@ -20,11 +20,13 @@ const collageManagementRoutesObject = new collageManagementRoutes();
 
 app.use('/', collageManagementRoutesObject.router);
 
-
+app.get('/', function(req, res) {
+    res.send('Hello Boss I am Called');
+})
 app.use(express.json())
 
  
-app.listen(4000)
+app.listen(process.env.PORT || 4000)
 console.log('App is listening....');
  
  /* Create Express Application
