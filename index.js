@@ -14,16 +14,15 @@ const express = require('express');
 
 const app = express()
 
+app.use(express.json());
+
+const collageManagementRoutesObject = new collageManagementRoutes();
+
+app.use('/', collageManagementRoutesObject.router);
+
+
 app.use(express.json())
 
-const collegeManagment = new collageManagementRoutes();
- 
-app.use('/', collegeManagment.router);
- 
-app.get('/', (req, res) => {
-    res.setHeader('hello', 'hee')
-    res.status(200).send("Hello")  
-})
  
 app.listen(4000)
 console.log('App is listening....');
